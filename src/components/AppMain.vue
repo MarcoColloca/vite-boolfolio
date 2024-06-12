@@ -1,13 +1,19 @@
 <script>
+    import axios from 'axios'
+    import ProjectCard from './single-components/main/ProjectCard.vue'
 
     export default {
+        components:{
+            ProjectCard,
+        },
+
+
         data(){
+            
 
         },
 
-        components:{
 
-        }
     }
 </script>
 
@@ -16,10 +22,14 @@
 <template>
     <!-- Page Main -->
     <main>
-        <div class="container">
-            <h1 class="text-center text-warning">
-                Main Page
-            </h1>
+        <div class="projects-section my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <ProjectCard></ProjectCard>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </template>
