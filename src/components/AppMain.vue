@@ -108,22 +108,24 @@
 
 
             <div class="container my-5">
-                <div class="d-flex gap-5 justify-content-center">
-                    <div>
-                        <p class="text-center">Page:</p>
+                <div class="row gap-5 justify-content-center">
+                    <div class="col-3 text-center">
+                        <p>Page:</p>
                         <ul class="change-page d-flex justify-content-center">
                             <li :class="n === currentPage ? 'text-coral' : ''" @click="changePage(n)" v-for="n in lastPage" :key="n">
                                 {{ n }}
                             </li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="col-3 text-center">
                         <p>Cards per Page:</p>
-                        <select @change="cardsInPage()" name="cards-pp" id="cards-pp" v-model="selected">
-                            <option v-for="option in options" :value="option.value">
-                                {{ option.text }}
-                            </option>
-                        </select>
+                        <div>
+                            <select @change="cardsInPage()" name="cards-pp" id="cards-pp" v-model="selected">
+                                <option v-for="option in options" :value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </div>
                         
                     </div>
                 </div>
@@ -161,7 +163,7 @@
     .change-page{
         display: flex;
         gap: 15px; 
-        
+        padding: 0;
         li{
             cursor: pointer;
             padding: 5px 12px;
