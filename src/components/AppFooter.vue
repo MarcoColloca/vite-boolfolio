@@ -20,7 +20,7 @@
     <!-- Page Footer -->
     <footer>
         <div class="container">
-            <h1>
+            <h1 class="text-center py-3">
                 I'm a Wonderful Footer
             </h1>
         </div>

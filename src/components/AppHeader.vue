@@ -5,6 +5,9 @@
         },
 
         data(){
+            return{
+
+            }
         }
     }
 </script>
@@ -15,7 +18,7 @@
     <!-- Page Header -->
     <header>
         <div class="container">
-            <h1>
+            <h1 class="text-center py-3">
                 App Header
             </h1>
         </div>

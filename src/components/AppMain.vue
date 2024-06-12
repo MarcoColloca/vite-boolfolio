@@ -50,7 +50,7 @@
         created(){
             this.fetchProjects()
 
-            console.log(this.perPage)
+            //console.log(this.perPage)
         },
 
         watch:{
@@ -74,7 +74,7 @@
                     }
                 })
                 .then(res =>{
-                    console.log(res.data.results.data)
+                    //console.log(res.data.results.data)
                     this.projects = res.data.results.data
                     this.lastPage = res.data.results.last_page
                 })
@@ -132,11 +132,16 @@
 
             <div class="container">
                 <div class="row row-gap-3">
-                    <div v-for="(project, i) in projects" :key="project.id" class="col-3">
+                    <div v-for="(project, i) in projects" :key="project.id" class="col-4">
                         <ProjectCard
                          :name="project.name"
                          :description="project.description"
                          :technologies="project.technologies"
+                         :link="project.link"
+                         :type="project.type?.name"
+                         :isPublic="project.isPublic"
+                         :contributors="project.contributors"
+                         :date="project.date_of_creation"
                         ></ProjectCard>
                     </div>
                 </div>
