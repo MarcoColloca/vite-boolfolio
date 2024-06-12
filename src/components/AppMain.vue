@@ -14,7 +14,34 @@
 
                 currentPage: 1,
 
-                lastPage: null
+                lastPage: null,
+                
+                selected: '',
+
+                options: [
+                    {
+                        text: '3',
+                        value: 3
+                    },
+                    {
+                        text: '5',
+                        value: 5
+                    },
+                    {
+                        text: '8',
+                        value: 8
+                    },
+                    {
+                        text: '12',
+                        value: 12
+                    },
+                    {
+                        text: '16',
+                        value: 16
+                    },
+                ],
+
+                perPage: 3,
             }
 
         },
@@ -23,10 +50,17 @@
         created(){
             this.fetchProjects()
 
-            console.log(this.projects)
+            console.log(this.perPage)
         },
 
-
+        watch:{
+            selected(newValue, oldValue){
+                if(newValue !== oldValue){
+                    this.cardsInPage()
+                    this.fetchProjects()
+                }
+            }
+        },
 
         methods:{
             fetchProjects(){
@@ -34,7 +68,7 @@
                 {
                     params:{
                         page: this.currentPage,
-                        perPage: 5 
+                        perPage: this.perPage 
                     }
                 })
                 .then(res =>{
@@ -48,6 +82,10 @@
                 if(n === this.currentPage) return
                 this.currentPage = n
                 this.fetchProjects()
+            },
+
+            cardsInPage(){
+                this.perPage = this.selected
             }
 
         }
@@ -73,6 +111,31 @@
             <div class="container">
                 <h1 class="text-center my-5 text-warning"> My Projects</h1>
             </div>
+
+
+            <div class="container my-5">
+                <div class="d-flex gap-5 justify-content-center">
+                    <div>
+                        <p class="text-center">Page:</p>
+                        <ul class="change-page d-flex justify-content-center">
+                            <li :class="n === currentPage ? 'text-coral' : ''" @click="changePage(n)" v-for="n in lastPage" :key="n">
+                                {{ n }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>Cards per Page:</p>
+                        <select name="cards-pp" id="cards-pp" v-model="selected">
+                            <option v-for="option in options" :value="option.value">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                        
+                    </div>
+                </div>
+            </div>
+
+
             <div class="container">
                 <div class="row row-gap-3">
                     <div v-for="(project, i) in projects" :key="project.id" class="col-3">
@@ -97,5 +160,22 @@
 
 
 <style lang="scss" scoped>
-   
+
+    main{
+        min-height: 1000px;
+    }
+
+    .change-page{
+        display: flex;
+        gap: 15px; 
+        
+        li{
+            cursor: pointer;
+            padding: 5px 12px;
+            &:hover{
+                color: coral;
+                //border: 1px solid coral;
+            }
+        }
+    }
 </style>
