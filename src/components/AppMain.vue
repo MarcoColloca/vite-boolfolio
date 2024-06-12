@@ -54,12 +54,14 @@
         },
 
         watch:{
-            selected(newValue, oldValue){
-                if(newValue !== oldValue){
-                    this.cardsInPage()
-                    this.fetchProjects()
+            /* 
+                selected(newValue, oldValue){
+                    if(newValue !== oldValue){
+                        this.cardsInPage()
+                        this.fetchProjects()
+                    }
                 }
-            }
+            */
         },
 
         methods:{
@@ -86,6 +88,7 @@
 
             cardsInPage(){
                 this.perPage = this.selected
+                this.fetchProjects()
             }
 
         }
@@ -97,15 +100,6 @@
 <template>
     <!-- Page Main -->
     <main>
-        <!-- <div class="projects-section my-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        <ProjectCard></ProjectCard>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         
         <div class="projects-section my-5">
             <div class="container">
@@ -125,7 +119,7 @@
                     </div>
                     <div>
                         <p>Cards per Page:</p>
-                        <select name="cards-pp" id="cards-pp" v-model="selected">
+                        <select @change="cardsInPage()" name="cards-pp" id="cards-pp" v-model="selected">
                             <option v-for="option in options" :value="option.value">
                                 {{ option.text }}
                             </option>
@@ -139,17 +133,11 @@
             <div class="container">
                 <div class="row row-gap-3">
                     <div v-for="(project, i) in projects" :key="project.id" class="col-3">
-                        <div class="project-card card">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ project.name }}</h4>
-                                <p>{{ project.description }}</p>            
-                            </div>
-                            <div class="card-footer">
-                                <ul>                                
-                                    <li v-for="tech in project.technologies"> {{ tech.name }} </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <ProjectCard
+                         :name="project.name"
+                         :description="project.description"
+                         :technologies="project.technologies"
+                        ></ProjectCard>
                     </div>
                 </div>
             </div>

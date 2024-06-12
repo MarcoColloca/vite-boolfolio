@@ -1,13 +1,22 @@
 <script>
 
     export default {
-        data(){
+        components:{
 
         },
 
-        components:{
+        props:{
+            name: String,
+            description: String,
+            technologies: Array
+        },
 
-        }
+        data(){
+            return{
+                
+            }
+        },
+
     }
 </script>
 
@@ -17,11 +26,14 @@
     <!-- Project Card -->
     <div class="project-card card">
         <div class="card-body">
-            <h4 class="card-title">Titolo</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus labore temporibus tempora expedita veritatis.</p>            
+            <h4 class="card-title">{{ name }}</h4>
+            
+            <p>{{ description }}</p>            
         </div>
         <div class="card-footer">
-            Footer!
+            <ul>                                
+                <li v-for="tech in technologies"> {{ tech.name }} </li>
+            </ul>
         </div>
     </div>
 </template>
