@@ -32,7 +32,7 @@
                 <div class="mb-3">
                     <label for="contact-mail" class="form-label">Email address:</label>
                     <input type="email" class="form-control" id="contact-mail" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text text-danger">I'll never share your email with anyone else.</div>
+                    <div id="emailHelp" class="form-text text-danger fw-bold text-end">I'll never share your email with anyone else.</div>
                 </div>
         
                 <!-- Message Form -->
@@ -56,7 +56,11 @@
     }
 
     .contact-form{
+        max-width: 700px;
         border: 1px solid coral;
         padding: 30px 15px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(77, 41, 0, 0.5)), url('/imgs/maxcoach-shape-13.png');
+        background-size: 2%;
+
     }
 </style>
