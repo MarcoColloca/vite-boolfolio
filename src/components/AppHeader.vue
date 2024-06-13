@@ -17,18 +17,18 @@
 <template>
     <!-- Page Header -->
     <header>
-        <div class="container">
-            <h1 class="text-center py-3">
-                App Header
-            </h1>
-        </div>
+        <nav class="d-flex gap-5 justify-content-center align-items-center">
+            <RouterLink :to="{name: 'home'}">Go to Home</RouterLink>
+            <RouterLink :to="{name: 'portfolio'}">Go to Blog</RouterLink>
+            <RouterLink to="/contact">Go to About</RouterLink>
+        </nav>
     </header>
 </template>
 
 
 
 <style lang="scss" scoped>
-    header{
+    nav{
         height: 100px;
         background-color: coral;
     }
