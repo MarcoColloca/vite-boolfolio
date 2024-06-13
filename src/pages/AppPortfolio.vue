@@ -24,24 +24,24 @@
                         value: 3
                     },
                     {
-                        text: '5',
-                        value: 5
+                        text: '6',
+                        value: 6
                     },
                     {
-                        text: '8',
-                        value: 8
+                        text: '9',
+                        value: 9
                     },
                     {
                         text: '12',
                         value: 12
                     },
                     {
-                        text: '16',
-                        value: 16
+                        text: '15',
+                        value: 15
                     },
                 ],
 
-                perPage: 3,
+                perPage: 6,
             }
 
         },
