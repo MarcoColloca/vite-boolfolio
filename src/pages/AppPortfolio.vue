@@ -103,7 +103,7 @@
         
         <div class="projects-section my-5">
             <div class="container">
-                <h1 class="text-center my-5 text-warning"> My Projects</h1>
+                <h1 class="text-center my-5 text-coral"> My Projects</h1>
             </div>
 
 

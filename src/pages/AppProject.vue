@@ -58,7 +58,7 @@
                 
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 d-flex justify-content-center">        
         <ProjectCard
          :name="project.name"
          :description="project.description"

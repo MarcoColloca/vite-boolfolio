@@ -11,11 +11,11 @@
 <template>
     <div class="contact-page">
         <div class="container">
-            <h1>
-                Contact
+            <h1 class="text-coral">
+                Contact Me
             </h1>
             <p>
-                Hello! I am Marco Colloca. 
+                Hello! I'm Marco Colloca. 
             </p>
             <p>
                 If you want to contact me.. please don't.

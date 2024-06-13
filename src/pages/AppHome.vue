@@ -9,12 +9,12 @@
 
 
 <template>
-    <div class="container">
-        <h1>
-            Home Page
+    <div class="container my-5 p-5">
+        <h1 class="text-coral">
+            Homepage
         </h1>
         <p>
-            Home.
+            Welcome to my Website. My name is Marco, but my friends call me Mark.  
         </p>
     </div>
 </template>
