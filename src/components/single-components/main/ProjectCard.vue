@@ -36,7 +36,7 @@
         <div class="card-body">
             <a :href="link"> Link al Progetto</a>
             <p class="my-3">
-                This Project is <span class="text-coral">{{ isPublic === 0 ? 'Public' : 'Private' }} </span>   
+                This Project is <span class="text-coral">{{ isPublic == 0 ? 'Public' : 'Private' }}</span>   
             </p>
             <p>
                 Date of Creation: {{ date }}
