@@ -61,6 +61,7 @@
     <div class="container my-5 d-flex justify-content-center">        
         <ProjectCard
          :name="project.name"
+         :slug="project.slug"
          :description="project.description"
          :technologies="project.technologies"
          :link="project.link"

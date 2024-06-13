@@ -137,6 +137,7 @@
                     <div v-for="(project, i) in projects" :key="project.id" class="col-4">
                         <ProjectCard
                          :name="project.name"
+                         :slug="project.slug"
                          :description="project.description"
                          :technologies="project.technologies"
                          :link="project.link"
@@ -144,8 +145,8 @@
                          :isPublic="project.is_public"
                          :contributors="project.contributors"
                          :date="project.date_of_creation"
-                        ></ProjectCard>  
-                        <router-link :to="{name: 'projects.show', params: { slug:project.slug }}">Read More..</router-link>                  
+                         :projectRoute="true"
+                        ></ProjectCard>                                            
                     </div>
                 </div>
             </div>

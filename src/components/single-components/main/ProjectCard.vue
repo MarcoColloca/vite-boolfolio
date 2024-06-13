@@ -7,6 +7,7 @@
 
         props:{
             name: String,
+            slug: String,
             description: String,
             visibleDescription:{
                 type: Boolean,
@@ -18,6 +19,10 @@
             isPublic: Number,
             contributors: Number,
             date: String,
+            projectRoute:{
+                type: Boolean,
+                default: false
+            }
         },
 
         
@@ -41,22 +46,42 @@
     <!-- Project Card -->
     <div class="project-card card">
         <div class="card-header my-header">
-            <h4 class="card-title text-primary">{{ name }}</h4>
+            <h4 class="card-title text-coral">{{ name }}</h4>
         </div>
         <div class="card-body my-body">
-            <a :href="link"> Link al Progetto</a>
+            <!-- Card Link -->
+            <a class="my-link" :href="link"> Project Link</a>
+
+            <!-- Card Is Public -->
             <p class="my-3">
                 This Project is <span class="text-coral">{{ isPublic == 0 ? 'Public' : 'Private' }}</span>   
             </p>
+
+            <!-- Card Date -->
             <p>
                 Date of Creation: {{ date }}
             </p>
+
+            <!-- Card Type -->
             <p class="my-3">
                 Type of Project: {{ type ?? 'Generic' }}
             </p>
+
+            <!-- Card Contributors Number -->
             <p class="my-3">
                 Contributors: {{ contributors }}
             </p>
+
+            <!-- Card Link {conditional} -->
+            <div class="my-2" v-show="this.projectRoute === true">
+                <div class="w-100 d-flex justify-content-end">
+                    <span class="btn btn-outline-coral">
+                        <router-link :to="{name: 'projects.show', params: { slug:slug }}">Read More..</router-link>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Card Description {conditional} -->
             <p v-show="this.visibleDescription === true">
                 {{ description }}
             </p>
@@ -75,6 +100,12 @@
 
     .project-card{
         max-width: 450px;
+        .my-link{
+            &:hover{
+                text-decoration: underline;
+                color: coral;
+            }
+        }
     }
 
     .my-header{
