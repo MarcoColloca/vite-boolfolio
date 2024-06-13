@@ -19,7 +19,7 @@
 
 
         mounted(){
-            this.fetchProjects()
+            this.fetchProject()
             // console.log(this.$router)
             // console.log(this.$route)
             // console.log(this.$route.params.slug);            
@@ -31,7 +31,7 @@
             },
 
 
-            fetchProjects(){
+            fetchProject(){
                 axios.get(`http://127.0.0.1:8000/api/projects/${this.slug}`)
                 .then(res =>{
                     // console.log(res.data.results)
