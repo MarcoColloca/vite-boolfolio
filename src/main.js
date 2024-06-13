@@ -1,7 +1,10 @@
 import { createApp } from 'vue'
 import './assets/style/general.scss'
-import App from './App.vue'
+import router from './router'
 import * as bootstrap from 'bootstrap'
+import App from './App.vue'
+
+
 
 
 /* Importazione della libreria di font awesome*/
@@ -39,6 +42,9 @@ import{
 library.add(faClockSolid, faClockRegular, faChevronDownSolid, faTwitter, faFacebookF, faInstagram, faLinkedin, faArrowUpLongSolid, faCircleSolid, faArrowRightLongSolid, faUserRegular, faFileLinesRegular, faEyeSolid, faCalendarRegular, faLocationDotSolid)
 
 const app = createApp(App)
+
+
+app.use(router)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 
