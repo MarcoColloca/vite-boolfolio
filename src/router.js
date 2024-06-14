@@ -1,5 +1,4 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
-
+import { createWebHistory, createRouter } from 'vue-router'
 
 
 // Import delle Pagine dell'Applicativo
@@ -7,10 +6,6 @@ import AppHome from './pages/AppHome.vue'
 import AppContact from './pages/AppContact.vue'
 import AppPortfolio from './pages/AppPortfolio.vue'
 import AppProject from './pages/AppProject.vue'
-
-
-
-
 
 
 // Creazione delle Rotte
@@ -43,11 +38,10 @@ const routes = [
 
 ]
 
-  
 
 const router = createRouter({
 
-    history: createMemoryHistory(),
+    history: createWebHistory(),
 
     routes: routes,
 
