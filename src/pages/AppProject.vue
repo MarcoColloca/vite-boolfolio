@@ -8,10 +8,14 @@
             ProjectCard
         },
 
+        props:{
+            slug: String
+        },  
+
         data(){
             return{
-                project: {},
-                slug: this.$route.params.slug,
+                project: null,
+                //slug: this.$route.params.slug,
                 description: true
             }
         },
@@ -20,9 +24,6 @@
 
         mounted(){
             this.fetchProject()
-            // console.log(this.$router)
-            // console.log(this.$route)
-            // console.log(this.$route.params.slug);            
         },
 
         methods:{
@@ -34,11 +35,20 @@
             fetchProject(){
                 axios.get(`http://127.0.0.1:8000/api/projects/${this.slug}`)
                 .then(res =>{
-                    // console.log(res.data.results)
 
                     this.project = res.data.results
                     
                 })
+                .catch( (err) => {
+                    // this.$router.push({name: 'NotFound'})                    
+                    // console.log(err)
+                    this.$router.replace({
+                        name: 'NotFound',
+                        params: { pathMatch: this.$route.path.substring(1).split('/') },
+                    });
+
+                    // alert("Hello: " + err); //this alert shows up correctly
+                });
             },
         }
     }
@@ -49,16 +59,17 @@
 
 
 <template>
-    <div class="container mt-5">
-        <h1>
-            Project Details
-        </h1>
-    
-        <button class="btn btn-outline-coral" @click="goBack">Back</button>
-                
+    <div class="container mt-5 ">
+        <div class="section-title">
+            <h1>
+                Project Details
+            </h1>
+        
+            <button class="btn btn-outline-coral" @click="goBack">Back</button>
+        </div>
     </div>
 
-    <div class="container my-5 d-flex justify-content-center">        
+    <div v-if="project" class="container my-5 d-flex justify-content-center">        
         <ProjectCard
          :name="project.name"
          :slug="project.slug"
@@ -76,5 +87,18 @@
 
 
 
-<style>
+<style lang="scss" scoped>
+    h1{
+        text-align: center;
+    }
+    .section-title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        button{
+            margin-left: -340px;
+            margin-top: 15px;
+        }
+    }
 </style>
