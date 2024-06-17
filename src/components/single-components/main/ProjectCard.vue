@@ -22,7 +22,8 @@
             projectRoute:{
                 type: Boolean,
                 default: false
-            }
+            },
+            imageUrl: [String, null]
         },
 
         
@@ -35,7 +36,7 @@
 
 
         mounted(){
-            
+           console.log(this.imageUrl)
         },
     }
 </script>
@@ -47,6 +48,7 @@
     <div class="project-card card">
         <div class="card-header my-header">
             <h4 class="card-title text-coral">{{ name }}</h4>
+            <img v-if="imageUrl" :src="imageUrl" alt="">
         </div>
         <div class="card-body my-body">
             <!-- Card Link -->

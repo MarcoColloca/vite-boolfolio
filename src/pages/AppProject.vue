@@ -81,6 +81,7 @@
          :contributors="project.contributors"
          :date="project.date_of_creation"
          :visibleDescription="true"
+         :imageUrl="project.cover_full_path"
         ></ProjectCard>
     </div>
 </template>

@@ -135,6 +135,7 @@
             <div class="container">
                 <div class="row row-gap-3">
                     <div v-for="(project, i) in projects" :key="project.id" class="col-4">
+                        
                         <ProjectCard
                          :name="project.name"
                          :slug="project.slug"
@@ -146,6 +147,7 @@
                          :contributors="project.contributors"
                          :date="project.date_of_creation"
                          :projectRoute="true"
+                         :imageUrl="project.cover_full_path"
                         ></ProjectCard>                                            
                     </div>
                 </div>
