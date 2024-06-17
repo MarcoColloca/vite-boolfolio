@@ -146,8 +146,7 @@
                          :isPublic="project.is_public"
                          :contributors="project.contributors"
                          :date="project.date_of_creation"
-                         :projectRoute="true"
-                         :imageUrl="project.cover_full_path"
+                         :projectRoute="true"                         
                         ></ProjectCard>                                            
                     </div>
                 </div>
