@@ -1,6 +1,49 @@
 <script>
+    import axios from 'axios';
+
+
     export default{
-        
+        data(){
+            return {
+                name: '',
+                email: '',
+                message: '',
+                errors: {},
+                loading: false,
+                success: false
+            }
+        },
+
+        methods: {
+            sendMessage(){
+
+                if(this.loading === true) return
+
+
+                this.errors = {}
+                this.loading = true
+
+                const data = {
+                    name: this.name,
+                    email: this.email,
+                    message: this.message
+                }
+
+                axios.post('http://127.0.0.1:8000/api/contacts', data)
+                .then(res => {
+
+                    if(res.data.success === true){
+
+                    }else{
+                        this.errors = res.data.errors
+                    }
+                })
+                .finally(() => {
+                    this.loading = false
+                    this.success = true
+                })
+            }
+        }
     }
 </script>
 
@@ -20,32 +63,41 @@
             <p>
                 If you want to contact me.. please don't.
             </p>
-            <form class="my-5 contact-form" action="" method="">
+            <form v-if="success === false" class="my-5 contact-form" action="" @submit.prevent="sendMessage">
         
                 <!-- Name Form -->
                 <div class="mb-3">
-                    <label for="contact-name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="contact-name">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" v-model="name">
+                    <small class="text-danger" v-if="errors.name">{{ errors.name.join(' ') }}</small>
                 </div>
         
                 <!-- Email Form -->
                 <div class="mb-3">
-                    <label for="contact-mail" class="form-label">Email address:</label>
-                    <input type="email" class="form-control" id="contact-mail" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text text-danger fw-bold text-end">I'll never share your email with anyone else.</div>
+                    <label for="email" class="form-label">Email address:</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="mail@example.com" v-model="email">
+                    <div id="emailHelp" class="form-text text-warning fw-bold text-end">I'll never share your email with anyone else.</div>
+                    <small class="text-danger" v-if="errors.name">{{ errors.email.join(' ') }}</small>
                 </div>
         
                 <!-- Message Form -->
                 <div class="mb-3 form-check">
-                    <label class="form-check-label" for="contact-message">Message:</label>
-                    <textarea class="form-control" id="contact-message"></textarea>
+                    <label class="form-check-label" for="message">Message:</label>
+                    <textarea class="form-control" id="message" placeholder="Cosa cerchi?" v-model="message"></textarea>
+                    <small class="text-danger" v-if="errors.name">{{ errors.message.join(' ') }}</small>
                 </div>
         
-        
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div v-if="loading===true"> Wait!</div>
+
+                <button v-else type="submit" class="btn btn-outline-coral">Submit</button>
             </form>
+            <div v-else>
+                <h2 class="text-coral">
+                    Grazie, per avermi contattato. Ti risponderò il prima possibile! 
+                </h2>
+            </div>
         </div>
-    </div>
+    </div>   
 </template>
 
 
@@ -62,5 +114,13 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(77, 41, 0, 0.5)), url('/imgs/maxcoach-shape-13.png');
         background-size: 2%;
 
+    }
+
+    input, textarea{
+        &:focus{
+            &::placeholder{                
+                color: transparent;
+            }
+        }
     }
 </style>
